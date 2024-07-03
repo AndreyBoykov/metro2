@@ -1,6 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { OneQuestionWithAnswerType } from '../../../types/ questionType';
+import type { OneQuestionWithAnswerType } from '../../../types/questionType';
 import getOneQuestionThunk from './questionThunks';
 
 const initialState: OneQuestionWithAnswerType[] = [];

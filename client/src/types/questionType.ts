@@ -14,7 +14,7 @@ export type OneAnswerType = z.infer<typeof OneAnswerSchema>;
 export type OneQuestionWithAnswerType = z.infer<typeof OneQuestionWithAnswerSchema>;
 
 // Тип для списка вопросов
-export type QuestionsType = z.infer<typeof AllQuestionsWithAnswersSchema>;
+export type AllQuestionsWithAnswerType = z.infer<typeof AllQuestionsWithAnswersSchema>;
 
 // Тип для категории
 export type OneCategoryType = z.infer<typeof OneCategorySchema>;

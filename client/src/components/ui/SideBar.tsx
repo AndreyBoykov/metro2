@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { Layout, Menu } from 'antd';
 import type { MenuProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getAllCategoriesThunk } from '../../redux/slices/category/categoryThunks';
-import type { OneCategoryType } from '../../types/ questionType';
+import type { OneCategoryType } from '../../types/questionType';
 
 const { Sider } = Layout;
 
@@ -14,8 +15,7 @@ type SideBarProps = {
 function SideBar({ onSelectCategory }: SideBarProps): JSX.Element {
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.category.categories);
-
-  console.log(categories);
+  const navigate = useNavigate();
 
   useEffect(() => {
     void dispatch(getAllCategoriesThunk());
@@ -24,6 +24,10 @@ function SideBar({ onSelectCategory }: SideBarProps): JSX.Element {
   const items: MenuProps['items'] = categories.map((category: OneCategoryType) => ({
     key: category.id.toString(),
     label: category.category,
+    onClick: () => {
+      onSelectCategory(category.id);
+      navigate(`/categories/${category.id}`);
+    },
   }));
 
   return (
@@ -31,7 +35,6 @@ function SideBar({ onSelectCategory }: SideBarProps): JSX.Element {
       <Menu
         mode="inline"
         defaultSelectedKeys={[categories.length > 0 ? categories[0].id.toString() : '']}
-        onSelect={({ key }) => onSelectCategory(Number(key))}
         style={{ height: '100%' }}
         items={items}
       />

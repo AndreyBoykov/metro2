@@ -175,6 +175,44 @@ module.exports = {
         updatedAt: new Date(),
       },
     ]);
+
+    await queryInterface.bulkInsert('UserProgresses', [
+      {
+        user_id: 1,
+        question_id: 1,
+        answeredCorrectly: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_id: 1,
+        question_id: 2,
+        answeredCorrectly: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_id: 1,
+        question_id: 3,
+        answeredCorrectly: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_id: 2,
+        question_id: 2,
+        answeredCorrectly: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_id: 2,
+        question_id: 4,
+        answeredCorrectly: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   async down(queryInterface, Sequelize) {

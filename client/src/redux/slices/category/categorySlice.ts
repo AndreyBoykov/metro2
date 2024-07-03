@@ -1,10 +1,11 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { AllCategoriesType, OneCategoryType } from '../../../types/ questionType';
+import type { AllCategoriesType, OneQuestionWithAnswerType } from '../../../types/questionType';
+import { getAllCategoriesThunk, getQuestionByCategoryThunk } from './categoryThunks';
 
 type CategoriesState = {
   categories: AllCategoriesType;
-  selectedCategory: OneCategoryType | null;
+  selectedCategory: OneQuestionWithAnswerType[] | null;
 };
 
 const initialState: CategoriesState = {
@@ -15,16 +16,23 @@ const initialState: CategoriesState = {
 const categoriesSlice = createSlice({
   name: 'category',
   initialState,
-  reducers: {
-    setCategories(state, action: PayloadAction<AllCategoriesType>) {
-      state.categories = action.payload;
-    },
-    setSelectedCategory(state, action: PayloadAction<OneCategoryType>) {
-      state.selectedCategory = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(
+        getAllCategoriesThunk.fulfilled,
+        (state, action: PayloadAction<AllCategoriesType>) => {
+          console.log(action.payload);
+          state.categories = action.payload;
+        },
+      )
+      .addCase(
+        getQuestionByCategoryThunk.fulfilled,
+        (state, action: PayloadAction<OneQuestionWithAnswerType[]>) => {
+          state.selectedCategory = action.payload;
+        },
+      );
   },
 });
-
-export const { setCategories, setSelectedCategory } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

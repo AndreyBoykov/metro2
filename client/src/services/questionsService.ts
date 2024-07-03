@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
 import { AllQuestionsWithAnswersSchema, OneQuestionWithAnswerSchema } from '../utils/validations';
-import type { OneQuestionWithAnswerType } from '../types/ questionType';
+import type { OneQuestionWithAnswerType } from '../types/questionType';
 import axiosInstance from './apiInstance';
 
 class QuestionsService {

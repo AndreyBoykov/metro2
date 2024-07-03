@@ -2,6 +2,8 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './components/Root';
 import MainPage from './components/pages/MainPage';
+import QuestionsByCategory from './components/pages/QuestionsByCategory';
+
 
 function App(): JSX.Element {
   const router = createBrowserRouter([
@@ -10,6 +12,7 @@ function App(): JSX.Element {
       element: <Root />,
       children: [
         { path: '/', element: <MainPage /> },
+        { path: 'categories/:categoryId', element: <QuestionsByCategory /> },
       ],
     },
   ]);

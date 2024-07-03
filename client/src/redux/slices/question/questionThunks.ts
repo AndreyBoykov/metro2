@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import type { OneQuestionWithAnswerType } from '../../../types/ questionType';
+import type { OneQuestionWithAnswerType } from '../../../types/questionType';
 import questionsService from '../../../services/questionsService';
 
 const getOneQuestionThunk = createAsyncThunk<

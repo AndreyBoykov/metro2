@@ -1,14 +1,7 @@
-import React from 'react';
-import { Layout } from 'antd';
+import React from 'react'
 
-const { Content } = Layout;
-
-function MainPage(): JSX.Element {
+export default function MainPage() {
   return (
-    <Content style={{ padding: '24px', background: '#fff', minHeight: 280 }}>
-      Main Page Content
-    </Content>
-  );
+    <div>MainPage</div>
+  )
 }
-
-export default MainPage;
