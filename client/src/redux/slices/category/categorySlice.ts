@@ -5,7 +5,7 @@ import { getAllCategoriesThunk, getQuestionByCategoryThunk } from './categoryThu
 
 type CategoriesState = {
   categories: AllCategoriesType;
-  selectedCategory: OneQuestionWithAnswerType[] | null;
+  selectedCategory: OneQuestionWithAnswerType | null;
 };
 
 const initialState: CategoriesState = {
@@ -28,7 +28,7 @@ const categoriesSlice = createSlice({
       )
       .addCase(
         getQuestionByCategoryThunk.fulfilled,
-        (state, action: PayloadAction<OneQuestionWithAnswerType[]>) => {
+        (state, action: PayloadAction<OneQuestionWithAnswerType>) => {
           state.selectedCategory = action.payload;
         },
       );

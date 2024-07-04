@@ -26,7 +26,7 @@ function SideBar({ onSelectCategory }: SideBarProps): JSX.Element {
     label: category.category,
     onClick: () => {
       onSelectCategory(category.id);
-      navigate(`/categories/${category.id}`);
+      navigate(`/categories/${category.id}/random`);
     },
   }));
 

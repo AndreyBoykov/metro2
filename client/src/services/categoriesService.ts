@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
-import { AllCategoriesSchema, AllQuestionsWithAnswersSchema } from '../utils/validations';
+import { AllCategoriesSchema, OneQuestionWithAnswerSchema } from '../utils/validations';
 import axiosInstance from './apiInstance';
-import type { AllCategoriesType, AllQuestionsWithAnswerType } from '../types/questionType'
+import type { AllCategoriesType, OneQuestionWithAnswerType } from '../types/questionType'
 
 class CategoriesService {
   constructor(private readonly apiInstance: AxiosInstance) {}
@@ -20,14 +20,14 @@ class CategoriesService {
   }
 
   // Получить все вопросы по одной категории
-  async getOneCategoryById(categoryId: number): Promise<AllQuestionsWithAnswerType> {
-    const { data } = await this.apiInstance.get<AllQuestionsWithAnswerType>(
-      `/categories/${categoryId}`,
+  async getOneCategoryById(categoryId: number): Promise<OneQuestionWithAnswerType> {
+    const { data } = await this.apiInstance.get<OneQuestionWithAnswerType>(
+      `/categories/${categoryId}/random`,
     );
     console.log('Fetched questions:', data);
 
     try {
-      const validatedData = AllQuestionsWithAnswersSchema.parse(data);
+      const validatedData = OneQuestionWithAnswerSchema.parse(data);
       console.log('Validation passed:', validatedData);
       return validatedData;
     } catch (error) {

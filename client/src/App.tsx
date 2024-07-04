@@ -12,7 +12,7 @@ function App(): JSX.Element {
       element: <Root />,
       children: [
         { path: '/', element: <MainPage /> },
-        { path: 'categories/:categoryId', element: <QuestionsByCategory /> },
+        { path: '/categories/:categoryId/random', element: <QuestionsByCategory /> },
       ],
     },
   ]);
